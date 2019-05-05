@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Auth from './Components/Auth/Auth'
+import Dashboard from './Components/Dashboard/Dashboard'
+import Form from './Components/Form/Form'
+import Post from './Components/Post/Post'
+import {HashRouter, Switch, Route } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+class App extends Component {
+    render() {
+
+      return (
+        <HashRouter>
+          <Switch>
+            <Route path='/' exact component={Auth}/>
+            <Route path='/dashboard' component={Dashboard}/>
+            <Route path='/post/:postid' component={Post}/>
+            <Route path='/form' component={Form}/>
+          </Switch>
+        </HashRouter>
+      );
+    }
+  }
 
 export default App;
