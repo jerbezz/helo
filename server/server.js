@@ -5,12 +5,14 @@ const session = require('express-session')
 const app = express()
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
+const controller = require('./controller')
+
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
     app.listen(SERVER_PORT, () => {
         console.log(`Listening on port: ${SERVER_PORT}`)
     })
-    console.log(db.listTables())
+    // console.log(db.listTables())
 })
 
 app.use(express.json());
@@ -22,5 +24,7 @@ app.use(session({
 
 
 //auth logins:
-
-
+app.post('/auth/register', controller.register)
+app.post('/auth/login', controller.login)
+app.get('/logout', controller.logout)
+app.get('/auth/user-data', controller.userData)

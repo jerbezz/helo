@@ -1,12 +1,20 @@
 import React, {Component} from 'react'
 import Nav from './../Nav/Nav'
+import {connect} from 'react-redux'
+import {getData} from './../../ducks/reducer'
 
 
 class Dashboard extends Component {
-    constructor(){
+    constructor(props){
         super()
 
     }
+
+    componentDidMount(){
+        
+    }
+
+
 
     render(){
         return(
@@ -18,4 +26,5 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard
+const mapState = (reduxState) => reduxState
+export default connect(mapState, { getData })(Dashboard)
