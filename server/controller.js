@@ -44,5 +44,25 @@ module.exports = {
     userData: (req, res) => {
         if(req.session.user) res.status(200).send(req.session.user)
       else res.status(401).send('please log in');
+    },
+
+    getPosts: async (req, res) => {
+        const db = req.app.get('db')
+        const posts = await db.getAllPosts()
+        res.status(200).send(posts)
+        
+    },
+    getPost: async (req, res) => {
+        const {id} = req.params
+        const db = req.app.get('db')
+        const post = await db.getOnePost([id])
+        res.status(200).send(post)
+    },
+    edit: async (req, res) => {
+        const {title, img, content} = req.body
+        const {id} = req.params
+        const db = req.app.get('db')
+        const posts = await db.editPost([title, content, id])
+        res.status(200).send(posts)
     }
 }

@@ -15,6 +15,11 @@ massive(CONNECTION_STRING).then(db => {
     // console.log(db.listTables())
 })
 
+let hello = () => {
+    return console.log('Hello')
+    next()
+}
+
 app.use(express.json());
 app.use(session({
     secret: SESSION_SECRET,
@@ -22,9 +27,22 @@ app.use(session({
     saveUninitialized: false
 }))
 
+app.use((req, res, next) => {
+    let badWords = ['jerk', 'knucklehead', 'internet explorer']
+    if (req.body.content) {
+        for(let i =0; i < badWords.length; i++){
+            let regex = new RegExp(badWords[i], 'g')
+            req.body.content = req.body.content.replace(regex, '****')
+        }
+    }
+    next()
+})
 
 //auth logins:
 app.post('/auth/register', controller.register)
 app.post('/auth/login', controller.login)
 app.get('/logout', controller.logout)
-app.get('/auth/user-data', controller.userData)
+app.get('/auth/user-data', hello, controller.userData)
+app.get('/api/posts', controller.getPosts)
+app.get('/api/post/:id', controller.getPost)
+app.put('/api/posts/:id', controller.edit)
