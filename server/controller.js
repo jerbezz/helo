@@ -59,10 +59,16 @@ module.exports = {
         res.status(200).send(post)
     },
     edit: async (req, res) => {
-        const {title, img, content} = req.body
+        const {title, content} = req.body
         const {id} = req.params
         const db = req.app.get('db')
         const posts = await db.editPost([title, content, id])
+        res.status(200).send(posts)
+    },
+    query: async (req, res) => {
+        const {title} = req.query
+        const db = req.app.get('db')
+        const posts = await db.query(`select * from helo_posts where posts_title like '%${title}%'`)
         res.status(200).send(posts)
     }
 }

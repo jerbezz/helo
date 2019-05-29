@@ -28,23 +28,29 @@ export default App;
 
 // Here is a comprehensive list of missing competencies:
 
-// HTML - Elements (link), 
-// HTML - Script, 
+// HTML - Elements (link), DONE
+// HTML - Script, DONE
 // React - Lifecycle (componentDidUpdate), 
 // React - Routing (match object), DONE
 // React - Redux (store, reducer), DONE
 // React - Redux (actions, action builders, mapDispatchToProps object), DONE
 // React - Redux (connect, mapStateToProps, share state), DONE
 // Server - REST (PUT endpoint), DONE
-// Server - REST (queries), 
+// Server - REST (queries), DONE
 // Server - Auth (sessions), DONE
 // Server - Middleware(Request level) filter bad words DONE
 // Server - Middleware (Top level) deving set proxy user DONE
 // DB - Statements (join), DONE
 // DB - Patterns (one-many), DONE
-// DB - Patterns (one-one), 
-// DB - Patterns (many-many), 
+// DB - Patterns (one-one), DONE
+// DB - Patterns (many-many), DONE
 // DB - Statements (sub-queries) Done
 
 // Plus 5 bonus (marked with a +)
 //verbals DONE
+
+//codewars
+//linkedin
+//resume
+//portfolio
+

@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {getData} from './../../ducks/reducer'
 import axios from 'axios'
 import Posts from './../Posts/Posts'
+import { restElement } from '@babel/types';
 
 
 class Dashboard extends Component {
@@ -11,7 +12,8 @@ class Dashboard extends Component {
         super(props)
         this.state = {
             posts: [],
-            edit: false
+            edit: false,
+            search: ''
         }
 
     }
@@ -31,6 +33,26 @@ class Dashboard extends Component {
                 posts: res.data
             })
         })
+    }
+
+    queryPosts = () => {
+        const {search} = this.state
+        axios.get(`/api/query?title=${search}`).then( res => {
+            this.setState({
+                posts: res.data
+            })
+        })
+    }
+
+    handleChange = e => {
+        let { name, value } = e.target
+        this.setState({
+            [name]: value
+        })
+    }
+
+    reset = () => {
+        this.getAllPosts()
     }
 
     render(){
@@ -53,6 +75,9 @@ class Dashboard extends Component {
             <div>
                 Dash
                 <Nav/>
+                <input name ='search' onChange={this.handleChange} placeholder='search contents'/>
+                <button onClick={() => this.queryPosts()}>Search</button>
+                <button onClick={this.reset}>Reset</button>
                 {posts.map((item, i) => {
                     return (
                         <Posts
