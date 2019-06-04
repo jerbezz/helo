@@ -30,7 +30,6 @@ export default App;
 
 // HTML - Elements (link), DONE
 // HTML - Script, DONE
-// React - Lifecycle (componentDidUpdate), 
 // React - Routing (match object), DONE
 // React - Redux (store, reducer), DONE
 // React - Redux (actions, action builders, mapDispatchToProps object), DONE
@@ -46,11 +45,12 @@ export default App;
 // DB - Patterns (many-many), DONE
 // DB - Statements (sub-queries) Done
 
-// Plus 5 bonus (marked with a +)
+// Plus 5 bonus (marked with a +) flex, animations, fancy, pseudo, vid(aud)
 //verbals DONE
 
-//codewars
+//codewars  DONE
 //linkedin
 //resume
 //portfolio
+//testing
 
