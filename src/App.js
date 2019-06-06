@@ -49,7 +49,7 @@ export default App;
 //verbals DONE
 
 //codewars  DONE
-//linkedin
+//linkedin DONE
 //resume
 //portfolio
 //testing
